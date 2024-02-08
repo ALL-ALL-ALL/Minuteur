@@ -8,6 +8,9 @@
 import SwiftUI
 
 struct ContentView: View {
+    @State private var Speed = 0.0
+    @State private var Pause = "pause"
+    
     var body: some View {
         VStack {
             VStack{
@@ -26,15 +29,25 @@ struct ContentView: View {
 
                 
             }// FIN VSTACK
+            
 
                 Circle()
                                 
                                     .stroke(lineWidth: 20)
                                     .foregroundColor(.pink)
                                     .padding(.top, -70)
+            
+            
+            
+            
+            
+            
+            
+            
                 
             
-            Text("12.9")
+            Text("\(Speed, specifier:"%.1f")")
+            
                 .padding(.top, -190)
                 .font(.title)
                 .bold()
@@ -93,7 +106,7 @@ struct ContentView: View {
 
 
                 
-                Slider(value: /*@START_MENU_TOKEN@*//*@PLACEHOLDER=Value@*/.constant(10)/*@END_MENU_TOKEN@*/)
+        Slider(value:$Speed, in : 0...10)
                 
                 
                 
