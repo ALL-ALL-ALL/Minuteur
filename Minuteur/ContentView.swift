@@ -26,12 +26,7 @@ struct ContentView: View {
 
                 
             }// FIN VSTACK
-            
 
-
-                
-
-                
                 Circle()
                                 
                                     .stroke(lineWidth: 20)
@@ -44,70 +39,55 @@ struct ContentView: View {
                 .font(.title)
                 .bold()
 
-
-                
-                
-
-                
-                
-                
             Spacer().frame(height: 100) // Réduit la largeur de l'espace entre les boutons
 
-
-                
-                
-
-  
             HStack{
-                
-                Image(systemName: "play")
-                
-                Button("play") {
-                    /*@START_MENU_TOKEN@*//*@PLACEHOLDER=Action@*/ /*@END_MENU_TOKEN@*/
-                }
-   
-                
-                
-                
-                
-                
-                Image(systemName: "play")
-                
-                Button("play") {
-                    /*@START_MENU_TOKEN@*//*@PLACEHOLDER=Action@*/ /*@END_MENU_TOKEN@*/
-                }
-                
-                
-                
-                
-                
-                
-            } // FIN HASTACK
-                
-                    
-                    
-                    
-
-                    
-                    
-                    
-  
-            
-            
-            
-            
-   
-
-                    
-     
+              
+                Button(action: {
+                    // Action à exécuter lorsque le bouton est appuyé
+                }) {
+                    HStack {
+                        Image(systemName: "play")
+                            .font(.title) // taille du symbole
                         
-
-                   
+                        Text("play")
+                            .bold()
+                    }// FIN HSTACK
                     
+                    .padding() // Ajoutez un padding autour du contenu du bouton
+                    .frame(maxWidth: 150) // Étire le bouton de droite à gauche
 
+                    .background(Color.black) // Couleur de fond du bouton
+                    .foregroundColor(.white) // Couleur du texte
+                    .cornerRadius(50) // Coins arrondis du bouton
+                } // FIN BUTTON
+                
+                Spacer().frame(width: 50) // Réduit  l'espace entre les boutons
 
-                 
-         
+                
+                
+                
+                Button(action: {
+                    // Action à exécuter lorsque le bouton est appuyé
+                }) {
+                    HStack {
+                        Image(systemName: "arrow.counterclockwise.circle")
+                            .font(.title) // taille du symbole
+                        
+                        Text("replay")
+                            .bold()
+                    }// FIN HSTACK
+                    
+                    .padding() // Ajoutez un padding autour du contenu du bouton
+                    .frame(maxWidth: 150) // Étire le bouton de droite à gauche
+
+                    .background(Color.black) // Couleur de fond - bouton-
+                    .foregroundColor(.white) // Couleur du texte
+                    .cornerRadius(50) // Coins arrondis du bouton
+                } // FIN BUTTON
+  
+            } // FIN HASTACK
+
                 } // FIN HSTACK
                 .padding(.bottom, 100) // Ajoutez un espace en haut du texte
 
@@ -119,9 +99,9 @@ struct ContentView: View {
                 
                 
  
-            } // FIN  VSTACK
+            } // FIN  BODY
 
-        } // FIN body
+        } // FIN STRUCT
 
         
 
