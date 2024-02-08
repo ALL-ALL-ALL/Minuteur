@@ -14,6 +14,8 @@ struct ContentView: View {
                 Text("Minuteur")
                     .font(.largeTitle)
                     .bold()
+                    .padding(.bottom, 5) // Ajoute une marge inférieure pour déplacer les boutons plus bas
+
                 
                 Image(systemName: "timer")
                     .font(.largeTitle)
@@ -24,66 +26,86 @@ struct ContentView: View {
 
                 
             }// FIN VSTACK
+            
+
 
                 
 
-            VStack{
                 
                 Circle()
                                 
                                     .stroke(lineWidth: 20)
                                     .foregroundColor(.pink)
-                                    .padding(.top, -20)
+                                    .padding(.top, -70)
                 
-            } // FIN VSTACK
+            
+            Text("12.9")
+                .padding(.top, -190)
+                .font(.title)
+                .bold()
+
+
                 
                 
 
                 
                 
                 
+            Spacer().frame(height: 100) // Réduit la largeur de l'espace entre les boutons
+
+
                 
                 
-                
-                
-               
+
   
-                HStack{
-
-
-
-                    Button("Play") {
-                        /*@START_MENU_TOKEN@*//*@PLACEHOLDER=Action@*/ /*@END_MENU_TOKEN@*/
-                    }
+            HStack{
+                
+                Image(systemName: "play")
+                
+                Button("play") {
+                    /*@START_MENU_TOKEN@*//*@PLACEHOLDER=Action@*/ /*@END_MENU_TOKEN@*/
+                }
+   
+                
+                
+                
+                
+                
+                Image(systemName: "play")
+                
+                Button("play") {
+                    /*@START_MENU_TOKEN@*//*@PLACEHOLDER=Action@*/ /*@END_MENU_TOKEN@*/
+                }
+                
+                
+                
+                
+                
+                
+            } // FIN HASTACK
+                
                     
-                    .font(.largeTitle)
-                    .bold()
-                    .foregroundColor(.white)
-                    .background(
-                        RoundedRectangle(
-                            cornerRadius: 20,
-                            style: .continuous
-                        )
-                        .fill(.pink)
-                    )
+                    
+                    
+
+                    
+                    
+                    
+  
+            
+            
+            
+            
+   
+
                     
      
-                    
-                    Button("Replay") {
-                        /*@START_MENU_TOKEN@*//*@PLACEHOLDER=Action@*/ /*@END_MENU_TOKEN@*/
-                    }
-                    .font(.largeTitle)
-                    .bold()
-                    .foregroundColor(.white)
-                    .background(
-                        RoundedRectangle(
-                            cornerRadius: 20,
-                            style: .continuous
-                        )
-                        .fill(.pink)
-                    )
+                        
 
+                   
                     
+
+
                  
          
                 } // FIN HSTACK
@@ -103,8 +125,12 @@ struct ContentView: View {
 
         
 
-    } // FIN STRUCTURE
 
 #Preview {
     ContentView()
 }
+
+
+
+
+
