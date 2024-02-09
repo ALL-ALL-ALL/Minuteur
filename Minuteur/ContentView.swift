@@ -8,8 +8,20 @@
 import SwiftUI
 
 struct ContentView: View {
-    @State private var Speed = 0.0
-    @State private var Pause = "pause"
+    @State private var Pause = true
+    @State private var elapsedTime = 0.0
+    let timer = Timer.publish(every: 1, on: .main, in: .common).autoconnect()
+
+
+    
+    
+    func timeString(time: Double) -> String {
+            let minutes = Int(time) / 60
+            let seconds = Int(time) % 60
+            return String(format: "%02d:%02d", minutes, seconds)
+        }
+    
+    
     
     var body: some View {
         VStack {
@@ -37,17 +49,14 @@ struct ContentView: View {
                                     .foregroundColor(.pink)
                                     .padding(.top, -70)
             
-            
-            
-            
-            
-            
-            
-            
-                
-            
-            Text("\(Speed, specifier:"%.1f")")
-            
+                Circle()
+                            
+                                    .stroke(lineWidth: 20)
+                                    .foregroundColor(.pink)
+                                    .padding(.top, -70)
+
+            Text(timeString(time: elapsedTime))
+
                 .padding(.top, -190)
                 .font(.title)
                 .bold()
@@ -57,13 +66,14 @@ struct ContentView: View {
             HStack{
               
                 Button(action: {
-                    // Action à exécuter lorsque le bouton est appuyé
+                    Pause.toggle()
+
                 }) {
                     HStack {
-                        Image(systemName: "play")
+                        Image(systemName: Pause ? "play" : "pause") // Changer l'image en fonction de Pause
                             .font(.title) // taille du symbole
                         
-                        Text("play")
+                        Text(Pause ? "Play" : "Pause") // Changer le texte en fonction de Pause
                             .bold()
                     }// FIN HSTACK
                     
@@ -98,23 +108,26 @@ struct ContentView: View {
                     .foregroundColor(.white) // Couleur du texte
                     .cornerRadius(50) // Coins arrondis du bouton
                 } // FIN BUTTON
-  
             } // FIN HASTACK
-
-                } // FIN HSTACK
+        } // FIN VSTACK
                 .padding(.bottom, 100) // Ajoutez un espace en haut du texte
 
 
-                
-        Slider(value:$Speed, in : 0...10)
+
+        Slider(value:$elapsedTime, in : 0...10)
+            .padding()
+
+        
                 
                 
                 
                 
  
             } // FIN  BODY
+    
 
         } // FIN STRUCT
+
 
         
 
