@@ -9,8 +9,26 @@ import SwiftUI
 
 struct ContentView: View {
     @State private var Pause = true
-    @State private var elapsedTime = 0.0
+    @State private var tempsecoule = 0.0
+    @State private var comptearebours = 20.0 // Temps initial du compte à rebours
+    @State private var encour = false
+    
     let timer = Timer.publish(every: 1, on: .main, in: .common).autoconnect()
+    
+    func startCountdown() {
+        tempsecoule = 0 // Réinitialiser le temps écoulé
+          // Vous pouvez également ajouter d'autres logiques ici si nécessaire
+      }
+      
+      func stopCountdown() {
+          // Arrêtez le compte à rebours
+      }
+      
+      func resetCountdown() {
+          stopCountdown() // Arrêtez d'abord le compte à rebours
+          tempsecoule = 0 // Réinitialiser le temps écoulé
+      }
+  
 
 
     
@@ -41,23 +59,23 @@ struct ContentView: View {
 
                 
             }// FIN VSTACK
+            ZStack{
+               
+                
+                Circle()
+                        .trim(from: 0, to: CGFloat(tempsecoule / comptearebours)) // Progression du cercle en fonction du temps écoulé
+                        .foregroundColor(.pink)
+                
+                        .padding(-60)
+         
+
+            }// FIN ZSTACK
             
 
-                Circle()
-                                
-                                    .stroke(lineWidth: 20)
-                                    .foregroundColor(.pink)
-                                    .padding(.top, -70)
-            
-                Circle()
-                            
-                                    .stroke(lineWidth: 20)
-                                    .foregroundColor(.pink)
-                                    .padding(.top, -70)
+                      
+            Text(timeString(time: comptearebours - tempsecoule))
 
-            Text(timeString(time: elapsedTime))
-
-                .padding(.top, -190)
+                .padding(.top, -130)
                 .font(.title)
                 .bold()
 
@@ -87,12 +105,14 @@ struct ContentView: View {
                 
                 Spacer().frame(width: 50) // Réduit  l'espace entre les boutons
 
-                
-                
-                
                 Button(action: {
-                    // Action à exécuter lorsque le bouton est appuyé
-                }) {
+                                   encour.toggle()
+                                   if encour {
+                                       startCountdown() // Commencer le compte à rebours lorsque le bouton "Play" est pressé
+                                   } else {
+                                       stopCountdown() // Arrêter le compte à rebours lorsque le bouton "Pause" est pressé
+                                   }
+                               }) {
                     HStack {
                         Image(systemName: "arrow.counterclockwise.circle")
                             .font(.title) // taille du symbole
@@ -112,25 +132,11 @@ struct ContentView: View {
         } // FIN VSTACK
                 .padding(.bottom, 100) // Ajoutez un espace en haut du texte
 
-
-
-        Slider(value:$elapsedTime, in : 0...10)
+        Slider(value:$tempsecoule, in : 0...200)
             .padding()
 
-        
-                
-                
-                
-                
- 
             } // FIN  BODY
-    
-
         } // FIN STRUCT
-
-
-        
-
 
 #Preview {
     ContentView()
