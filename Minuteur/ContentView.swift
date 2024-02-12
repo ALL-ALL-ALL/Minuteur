@@ -9,12 +9,12 @@ import SwiftUI
 
 struct ContentView: View {
     @State var slider = 10.0
+    @State var progress: Double = 0
 
     @State private var enLecture = false // pour que l'image change de lecture à pause
-    @State var progress: Double = 0
     @State private var remainingTime = 10.0 // Temps initial du compte à rebours
-    let timer = Timer.publish(every: 1, on: .main, in: .common).autoconnect()
     
+    let timer = Timer.publish(every: 1, on: .main, in: .common).autoconnect()
     
     
     
@@ -129,7 +129,7 @@ struct ContentView: View {
                 
                 
             } // FIN HASTACK
-            Slider(value: $remainingTime, in: 0...50 )
+            Slider(value: $remainingTime, in: 0...10 )
             
         } // FIN VSTACK
         .onReceive(timer) { _ in
