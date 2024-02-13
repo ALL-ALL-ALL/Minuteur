@@ -9,9 +9,10 @@ import SwiftUI
 
 struct ContentView: View {
     @State var slider = 10.0
-    @State var progress: Double = 0
+    @State var progress: Double = 0.0
 
     @State private var enLecture = false // pour que l'image change de lecture à pause
+    
     @State private var remainingTime = 10.0 // Temps initial du compte à rebours
     
     let timer = Timer.publish(every: 1, on: .main, in: .common).autoconnect()
@@ -55,14 +56,6 @@ struct ContentView: View {
                 
                 Text("\(Int(remainingTime))")
 
-                
-                
-                
-                
-                
-                
-                
-                
             }// FIN ZSTACK
             
             
@@ -74,20 +67,23 @@ struct ContentView: View {
             
             HStack{
                 
-                Button(action: {
+                Button(action: {               // BOUTTON ICI ICI ICI ICI
                     enLecture.toggle()
                     
                     
                 }) {
-                    
-                    
-                    
+              
                     HStack {
+                        
+                        
+                        
                         Image(systemName: enLecture ? "pause" : "play")
                             .font(.title) //
                         
                         Text(enLecture ? "Pause" : "Play")
                             .bold()
+                        
+                        
                     }// FIN HSTACK
                     
                     .padding() // Ajoutez un padding autour du contenu du bouton
@@ -98,15 +94,20 @@ struct ContentView: View {
                     .cornerRadius(50) // Coins arrondis du bouton
                 } // FIN BUTTON
                 
+                
+                
+                
+                
+                
                 Spacer().frame(width: 50) // Réduit  l'espace entre les boutons
                 
                 
                 
                 
                 Button(action: {
-                    remainingTime = slider
-
-                    
+                    withAnimation {
+                        progress = slider
+                    }
                 }) {
                     
                     
